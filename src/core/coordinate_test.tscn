@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4ws04coordtest"]
+
+[ext_resource type="Script" path="res://src/core/coordinate_test.gd" id="1_aaaa"]
+
+[node name="CoordinateTest" type="Node"]
+script = ExtResource("1_aaaa")

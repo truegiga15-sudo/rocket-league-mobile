@@ -30,6 +30,11 @@ move_right={
 ]
 }
 
+[autoload]
+
+SaveService="*res://src/core/save_service.gd"
+ConfigService="*res://src/core/config_service.gd"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

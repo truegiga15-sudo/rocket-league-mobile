@@ -1,0 +1,164 @@
+{
+  "version": 1,
+  "description": "WS06 touch layout \u2014 respects docs/architecture/00-conventions.md \u00a75/\u00a76. Units dp; runtime converts via DisplayMetrics. Safe area insets applied at runtime.",
+  "orientation": "landscape",
+  "safe_area": {
+    "respect_insets": true,
+    "inset_source": "Display.get_safe_area_rect / Window.get_display_safe_area"
+  },
+  "zones": {
+    "move_joystick": {
+      "id": "move_joystick",
+      "type": "joystick",
+      "description": "Left 35% screen = move joystick",
+      "anchor": "left_center",
+      "area": {
+        "x_percent": 0,
+        "y_percent": 0,
+        "width_percent": 35,
+        "height_percent": 100
+      },
+      "joystick": {
+        "radius_dp": 120,
+        "deadzone_dp": 12,
+        "deadzone_normalized": 0.1,
+        "max_deflection": 1.0,
+        "behavior": "follow_finger_within_radius",
+        "return_to_center_ms": 120,
+        "output": "move: Vector2 normalized [-1,1]"
+      },
+      "visual": {
+        "show_ring": true,
+        "show_thumb": true,
+        "opacity_active": 0.85,
+        "opacity_idle": 0.45
+      }
+    },
+    "camera": {
+      "id": "camera",
+      "type": "touch_drag",
+      "description": "Right 35% = camera (orbit)",
+      "anchor": "right_center",
+      "area": {
+        "x_percent": 65,
+        "y_percent": 0,
+        "width_percent": 35,
+        "height_percent": 100
+      },
+      "camera": {
+        "sensitivity_dp_per_unit": 120,
+        "deadzone_dp": 4,
+        "invert_y": false,
+        "output": "look: Vector2 normalized [-1,1] per frame delta"
+      },
+      "visual": {
+        "show_hint": false
+      }
+    },
+    "action_cluster": {
+      "id": "action_cluster",
+      "type": "button_cluster",
+      "description": "Bottom-right cluster for boost/jump/drift",
+      "anchor": "bottom_right",
+      "area": {
+        "x_percent": 65,
+        "y_percent": 50,
+        "width_percent": 35,
+        "height_percent": 50
+      },
+      "layout": {
+        "min_target_dp": 56,
+        "gap_dp": 8,
+        "safe_area_padding_dp": 12,
+        "arrangement": "triangle",
+        "positions": {
+          "boost": {
+            "rel": "bottom_right",
+            "offset_dp": [
+              -12,
+              -12
+            ],
+            "size_dp": 72,
+            "shape": "rounded_rect",
+            "priority": 1
+          },
+          "jump": {
+            "rel": "bottom_right",
+            "offset_dp": [
+              -92,
+              -12
+            ],
+            "size_dp": 64,
+            "shape": "circle",
+            "priority": 2
+          },
+          "drift": {
+            "rel": "bottom_right",
+            "offset_dp": [
+              -12,
+              -92
+            ],
+            "size_dp": 56,
+            "shape": "circle",
+            "priority": 3
+          }
+        },
+        "constraints": {
+          "no_control_less_than_dp": 48,
+          "min_target_dp": 56,
+          "gap_dp": 8,
+          "min_gap_dp": 8
+        }
+      },
+      "buttons": {
+        "boost": {
+          "action": "boost",
+          "type": "hold",
+          "label": "BOOST",
+          "haptics": "light_continuous"
+        },
+        "jump": {
+          "action": "jump",
+          "type": "tap",
+          "label": "JUMP",
+          "haptics": "medium_tap",
+          "double_tap_window_ms": 250
+        },
+        "drift": {
+          "action": "drift",
+          "type": "hold",
+          "label": "DRIFT",
+          "haptics": "light_tap"
+        }
+      }
+    }
+  },
+  "extra": {
+    "ball_cam_toggle": {
+      "id": "ball_cam",
+      "type": "tap",
+      "area": {
+        "x_percent": 42,
+        "y_percent": 5,
+        "width_percent": 16,
+        "height_percent": 10
+      },
+      "min_target_dp": 56,
+      "action": "ball_cam",
+      "label": "BALL CAM",
+      "placement": "top_center"
+    }
+  },
+  "ergonomics": {
+    "landscape_locked": true,
+    "portrait_shows_rotate_prompt": true,
+    "target_fps": 60,
+    "fallback_fps": 30,
+    "max_latency_ms": 32,
+    "haptics_via": "res://src/platform/android/haptics.gd"
+  },
+  "dp_reference": {
+    "note": "120dp radius / 12dp deadzone / 56dp min target / 8dp gap as per \u00a75. Convert: px = dp * (dpi/160)",
+    "baseline_dpi": 160
+  }
+}

@@ -75,6 +75,11 @@ look_down={
 InputService="*res://src/core/input_service.gd"
 Haptics="*res://src/platform/android/haptics.gd"
 
+[autoload]
+
+SaveService="*res://src/core/save_service.gd"
+ConfigService="*res://src/core/config_service.gd"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

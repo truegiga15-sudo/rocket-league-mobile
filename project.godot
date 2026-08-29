@@ -1,0 +1,36 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly
+
+config_version=5
+
+[application]
+
+name="Rocket League Mobile"
+run/main_scene="res://src/ui/main_menu.tscn"
+config/features=PackedStringArray("4.4")
+boot_splash/bg_color=Color(0.05, 0.05, 0.08, 1)
+config/icon="res://assets/authored/icon/icon.png"
+
+[physics]
+
+common/physics_ticks_per_second=120
+
+[input]
+
+move_left={
+"deadzone": 0.2,
+"events": [Object(InputEventJoypadMotion,"device":0,"axis":0,"axis_value":-1.0, "script":null)
+, Object(InputEventKey,"device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"command_pressed":false,"ctrl_pressed":false,"pressed":false,"keycode":4194319,"physical_keycode":0,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
+}
+move_right={
+"deadzone": 0.2,
+"events": [Object(InputEventJoypadMotion,"device":0,"axis":0,"axis_value":1.0, "script":null)
+, Object(InputEventKey,"device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"command_pressed":false,"ctrl_pressed":false,"pressed":false,"keycode":4194321,"physical_keycode":0,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
+}
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+environment/defaults/default_environment="res://src/render/default_env.tres"

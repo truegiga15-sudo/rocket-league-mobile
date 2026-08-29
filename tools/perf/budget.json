@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "description": "WS10 Performance Budgets — enforced in CI (docs/architecture/00-conventions.md §12)",
+  "target_device": "mid",
+  "budgets": {
+    "draw_calls": {
+      "max": 120,
+      "unit": "calls/frame",
+      "source": "Performance.RENDER_TOTAL_DRAW_CALLS_IN_FRAME",
+      "enforce": true
+    },
+    "tris": {
+      "max": 300000,
+      "unit": "triangles/frame",
+      "source": "Performance.RENDER_TOTAL_PRIMITIVES_IN_FRAME",
+      "note": "primitives == tris in Godot Forward+/Mobile; budget is triangles",
+      "enforce": true
+    },
+    "texture_mem_mb": {
+      "max": 350,
+      "unit": "MB",
+      "source": "Performance.RENDER_TEXTURE_MEM_USED",
+      "bytes_max": 367001600,
+      "enforce": true
+    },
+    "physics_ms": {
+      "max": 4.0,
+      "unit": "ms/frame",
+      "source": "Performance.TIME_PHYSICS_PROCESS (seconds * 1000)",
+      "enforce": true
+    },
+    "frame_ms": {
+      "max": 16.6,
+      "unit": "ms/frame",
+      "source": "Performance.TIME_PROCESS + TIME_PHYSICS_PROCESS or 1000/FPS; 60fps budget",
+      "enforce": true
+    }
+  },
+  "ci": {
+    "fail_on_exceed": true,
+    "log_path": "user://perf.log",
+    "harness": "tools/perf/profiler.gd",
+    "regression_test": "tests/regression/perf_budget_test.gd"
+  }
+}

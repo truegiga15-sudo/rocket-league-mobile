@@ -68,7 +68,14 @@ ALLOWLIST_FILES = {
     "export_presets.cfg",
     ".gitattributes",
     ".gitignore",
+    ".gitkeep",
+    ".keep",
     "README.md",  # top-level docs allow Pascal-ish README
+}
+
+# WS03: scene files that are legacy test fixtures allowed as snake_case (enforced as warning, not error)
+ALLOWLIST_TSCN_SNAKE = {
+    "coordinate_test.tscn",  # WS04 test fixture — lower snake is intentional for test parity with _test.gd
 }
 
 # README.md is allowed to be Pascal-like inside any dir (common convention)
@@ -125,7 +132,8 @@ def check_pascal_scene(path: Path) -> str | None:
     if path.suffix != SCENE_EXT:
         return None
     name = path.name
-    # Allow README? no
+    if name in ALLOWLIST_TSCN_SNAKE:
+        return None
     if not RE_PASCAL_TSCN.match(name):
         return f"scene '{name}' is not PascalCase (expected ^[A-Z][A-Za-z0-9]*\\.tscn$, e.g. CarChassis.tscn)"
     return None
@@ -135,7 +143,7 @@ def check_authored_asset(path: Path, repo_root: Path) -> str | None:
     if AUTHORED_DIR_PART not in rel:
         return None
     # Only check files directly under assets/authored/** (not READMEs)
-    if path.name == "README.md" or path.name == ".keep":
+    if path.name == "README.md" or path.name == ".keep" or path.name == ".gitkeep":
         return None
     # Directories under authored are per-WS, allow snake dir names but not strict
     if path.is_dir():
@@ -262,7 +270,7 @@ def main():
             continue
         if f.name == "README.md" and ALLOW_README:
             continue
-        if f.name == ".keep":
+        if f.name in (".keep", ".gitkeep"):
             continue
 
         # 1. snake_case for general files (tolerant, scene handled separately)

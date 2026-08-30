@@ -1,3 +1,6 @@
+# WS03 Asset Pipeline — LFS tracking (deterministic assets only)
+# All authored assets are LFS-tracked; additionally *.glb/*.png/*.wav etc
+# >1MB MUST be LFS. >50MB requires review. See docs/architecture/asset-pipeline.md §2.
 assets/authored/** filter=lfs diff=lfs merge=lfs -text
 *.glb filter=lfs diff=lfs merge=lfs -text
 *.gltf filter=lfs diff=lfs merge=lfs -text

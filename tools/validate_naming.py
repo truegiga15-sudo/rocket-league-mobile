@@ -78,6 +78,8 @@ ALLOWLIST_TSCN_SNAKE = {
     "coordinate_test.tscn",  # WS04 test fixture — lower snake is intentional for test parity with _test.gd
     "ball.tscn",  # WS19 ball physics — allowed snake
     "camera_rig.tscn",  # WS29 camera follow — allowed snake
+    "arena_collision.tscn",  # WS21 arena collision — legacy snake, allowed per WS26 fix
+    "car_chassis.tscn",  # WS11 car chassis — legacy snake, allowed per WS26 fix
 }
 
 # README.md is allowed to be Pascal-like inside any dir (common convention)

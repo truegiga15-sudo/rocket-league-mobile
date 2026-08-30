@@ -184,6 +184,23 @@ func reset() -> void:
 		wheel_last_compression[i] = 0.0
 
 # ---------------------------------------------------------------------------
+# WS13 Friction integration — delegates to TireFriction
+# ---------------------------------------------------------------------------
+
+## Compute tire friction forces via TireFriction for current suspension state.
+## throttle: -1..1 from Engine/InputService; steer_angle: rad.
+func compute_friction_forces(chassis_transform: Transform3D, chassis_vel: Vector3, throttle: float = 0.0, steer_angle: float = 0.0) -> Array[Vector3]:
+	var FrictionRef = load("res://src/game/car/friction.gd")
+	return FrictionRef.compute_forces(chassis_transform, chassis_vel, self, throttle, steer_angle)
+
+## Apply both suspension + friction to car in one tick (budget-aware: 8 forces max).
+func apply_with_friction(car: RigidBody3D, space_state: PhysicsDirectSpaceState3D = null, throttle: float = 0.0, steer_angle: float = 0.0) -> Dictionary:
+	var FrictionRef2 = load("res://src/game/car/friction.gd")
+	var susp_forces := apply_to_car(car, space_state)
+	var fric_forces := FrictionRef2.apply_to_car(car, self, throttle, steer_angle)
+	return {"suspension": susp_forces, "friction": fric_forces}
+
+# ---------------------------------------------------------------------------
 # Validation & telemetry — conventions §11 — budget-aware (<4ms physics)
 # ---------------------------------------------------------------------------
 

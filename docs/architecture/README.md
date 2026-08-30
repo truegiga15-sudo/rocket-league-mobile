@@ -5,7 +5,8 @@
 
 ## Documents
 - `00-conventions.md` — shared conventions (source of truth)
-- `scene-ownership.md` — per-file/WS ownership (WS02) ← you are here
+- `scene-ownership.md` — per-file/WS ownership (WS02)
+- `asset-pipeline.md` — asset import pipeline & naming (WS03) ← authoritative pipeline
 - `blind-ab-harness.md` — critic harness spec (WS99)
 - `save-schema.md` — save/config schema (WS08)
 - `dependency-graph.md` — (future, WS01) wave/dependency visualization

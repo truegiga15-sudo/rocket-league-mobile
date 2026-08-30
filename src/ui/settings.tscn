@@ -1,0 +1,67 @@
+[gd_scene load_steps=2 format=3 uid="uid://ws79_settings"]
+
+[ext_resource type="Script" path="res://src/ui/settings.gd" id="1_ws79"]
+
+[node name="Settings" type="Control"]
+layout_mode=3
+anchors_preset=15
+anchor_right=1.0
+anchor_bottom=1.0
+grow_horizontal=2
+grow_vertical=2
+script=ExtResource("1_ws79")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode=1
+anchors_preset=15
+anchor_right=1.0
+anchor_bottom=1.0
+grow_horizontal=2
+grow_vertical=2
+color=Color(0.05, 0.05, 0.08, 1)
+
+[node name="PauseOverlay" type="Panel" parent="."]
+layout_mode=1
+anchors_preset=8
+anchor_left=0.5
+anchor_top=0.5
+anchor_right=0.5
+anchor_bottom=0.5
+offset_left=-200.0
+offset_top=-150.0
+offset_right=200.0
+offset_bottom=150.0
+visible=false
+
+[node name="TabBar" type="HBoxContainer" parent="PauseOverlay"]
+layout_mode=2
+alignment=1
+
+[node name="GraphicsTab" type="Button" parent="PauseOverlay/TabBar"]
+layout_mode=2
+text="Graphics"
+
+[node name="AudioTab" type="Button" parent="PauseOverlay/TabBar"]
+layout_mode=2
+text="Audio"
+
+[node name="ControlsTab" type="Button" parent="PauseOverlay/TabBar"]
+layout_mode=2
+text="Controls"
+
+[node name="GeneralTab" type="Button" parent="PauseOverlay/TabBar"]
+layout_mode=2
+text="General"
+
+[node name="ResumeButton" type="Button" parent="PauseOverlay"]
+custom_minimum_size=Vector2(240, 48)
+layout_mode=2
+text="Resume"
+
+[node name="QuitButton" type="Button" parent="PauseOverlay"]
+custom_minimum_size=Vector2(240, 48)
+layout_mode=2
+text="Quit to Menu"
+
+[connection signal="pressed" from="PauseOverlay/ResumeButton" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="PauseOverlay/QuitButton" to="." method="_on_quit_pressed"]

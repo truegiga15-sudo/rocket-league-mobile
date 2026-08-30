@@ -1,0 +1,246 @@
+[gd_scene load_steps=24 format=3 uid="uid://ws21_arena_collision"]
+
+[ext_resource type="Script" path="res://src/game/arena/arena_collision.gd" id="1_arena_gd"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_arena"]
+friction = 0.6
+bounce = 0.75
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_floor"]
+size = Vector3(42, 1, 62)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ceiling"]
+size = Vector3(42, 1, 62)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wall_east"]
+size = Vector3(1, 20, 62)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wall_west"]
+size = Vector3(1, 20, 62)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_end_left"]
+size = Vector3(16.35, 20, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_end_top"]
+size = Vector3(7.3, 17.9, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oob"]
+size = Vector3(60, 40, 80)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_h_side"]
+radius = 2.0
+height = 60.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_h_end"]
+radius = 2.0
+height = 36.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_vert"]
+radius = 2.0
+height = 20.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_h_side"]
+top_radius = 2.0
+bottom_radius = 2.0
+height = 60.0
+radial_segments = 12
+rings = 1
+cap_top = false
+cap_bottom = false
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_h_end"]
+top_radius = 2.0
+bottom_radius = 2.0
+height = 36.0
+radial_segments = 12
+rings = 1
+cap_top = false
+cap_bottom = false
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_vert"]
+top_radius = 2.0
+bottom_radius = 2.0
+height = 20.0
+radial_segments = 12
+rings = 1
+cap_top = false
+cap_bottom = false
+
+[sub_resource type="BoxMesh" id="BoxMesh_floor_debug"]
+size = Vector3(40, 0.1, 60)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_floor"]
+albedo_color = Color(0.18, 0.45, 0.22, 1)
+roughness = 0.85
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wall"]
+albedo_color = Color(0.55, 0.55, 0.58, 1)
+roughness = 0.9
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_curve"]
+albedo_color = Color(0.6, 0.6, 0.62, 0.35)
+transparency = 1
+roughness = 0.7
+
+[node name="ArenaCollision" type="Node3D"]
+script = ExtResource("1_arena_gd")
+
+[node name="ArenaStatic" type="StaticBody3D" parent="."]
+collision_layer = 1
+collision_mask = 10
+physics_material_override = SubResource("PhysicsMaterial_arena")
+
+[node name="Floor" type="CollisionShape3D" parent="ArenaStatic"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_floor")
+debug_color = Color(0.2, 0.8, 0.2, 0.4)
+
+[node name="Ceiling" type="CollisionShape3D" parent="ArenaStatic"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20.5, 0)
+shape = SubResource("BoxShape3D_ceiling")
+debug_color = Color(0.2, 0.2, 0.8, 0.25)
+
+[node name="WallEast" type="CollisionShape3D" parent="ArenaStatic"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.5, 10, 0)
+shape = SubResource("BoxShape3D_wall_east")
+debug_color = Color(0.8, 0.2, 0.2, 0.4)
+
+[node name="WallWest" type="CollisionShape3D" parent="ArenaStatic"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.5, 10, 0)
+shape = SubResource("BoxShape3D_wall_west")
+debug_color = Color(0.8, 0.2, 0.2, 0.4)
+
+[node name="WallNorthLeft" type="CollisionShape3D" parent="ArenaStatic"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.825, 10, 30.5)
+shape = SubResource("BoxShape3D_end_left")
+debug_color = Color(0.8, 0.2, 0.2, 0.4)
+
+[node name="WallNorthRight" type="CollisionShape3D" parent="ArenaStatic"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.825, 10, 30.5)
+shape = SubResource("BoxShape3D_end_left")
+debug_color = Color(0.8, 0.2, 0.2, 0.4)
+
+[node name="WallNorthTop" type="CollisionShape3D" parent="ArenaStatic"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.05, 30.5)
+shape = SubResource("BoxShape3D_end_top")
+debug_color = Color(0.8, 0.5, 0.2, 0.4)
+
+[node name="WallSouthLeft" type="CollisionShape3D" parent="ArenaStatic"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.825, 10, -30.5)
+shape = SubResource("BoxShape3D_end_left")
+debug_color = Color(0.8, 0.2, 0.2, 0.4)
+
+[node name="WallSouthRight" type="CollisionShape3D" parent="ArenaStatic"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.825, 10, -30.5)
+shape = SubResource("BoxShape3D_end_left")
+debug_color = Color(0.8, 0.2, 0.2, 0.4)
+
+[node name="WallSouthTop" type="CollisionShape3D" parent="ArenaStatic"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.05, -30.5)
+shape = SubResource("BoxShape3D_end_top")
+debug_color = Color(0.8, 0.5, 0.2, 0.4)
+
+[node name="CurveEastFloor" type="CollisionShape3D" parent="ArenaStatic"]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 18, 2, 0)
+shape = SubResource("CylinderShape3D_h_side")
+debug_color = Color(0.2, 0.8, 0.8, 0.35)
+
+[node name="CurveEastFloorMesh" type="MeshInstance3D" parent="ArenaStatic"]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 18, 2, 0)
+mesh = SubResource("CylinderMesh_h_side")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_curve")
+
+[node name="CurveWestFloor" type="CollisionShape3D" parent="ArenaStatic"]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, -18, 2, 0)
+shape = SubResource("CylinderShape3D_h_side")
+debug_color = Color(0.2, 0.8, 0.8, 0.35)
+
+[node name="CurveWestFloorMesh" type="MeshInstance3D" parent="ArenaStatic"]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, -18, 2, 0)
+mesh = SubResource("CylinderMesh_h_side")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_curve")
+
+[node name="CurveNorthFloor" type="CollisionShape3D" parent="ArenaStatic"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 2, 28)
+shape = SubResource("CylinderShape3D_h_end")
+debug_color = Color(0.2, 0.8, 0.8, 0.35)
+
+[node name="CurveNorthFloorMesh" type="MeshInstance3D" parent="ArenaStatic"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 2, 28)
+mesh = SubResource("CylinderMesh_h_end")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_curve")
+
+[node name="CurveSouthFloor" type="CollisionShape3D" parent="ArenaStatic"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 2, -28)
+shape = SubResource("CylinderShape3D_h_end")
+debug_color = Color(0.2, 0.8, 0.8, 0.35)
+
+[node name="CurveSouthFloorMesh" type="MeshInstance3D" parent="ArenaStatic"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 2, -28)
+mesh = SubResource("CylinderMesh_h_end")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_curve")
+
+[node name="CurveCornerNE" type="CollisionShape3D" parent="ArenaStatic"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 10, 28)
+shape = SubResource("CylinderShape3D_vert")
+debug_color = Color(0.8, 0.8, 0.2, 0.25)
+
+[node name="CurveCornerNEMesh" type="MeshInstance3D" parent="ArenaStatic"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 10, 28)
+mesh = SubResource("CylinderMesh_vert")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_curve")
+
+[node name="CurveCornerNW" type="CollisionShape3D" parent="ArenaStatic"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 10, 28)
+shape = SubResource("CylinderShape3D_vert")
+debug_color = Color(0.8, 0.8, 0.2, 0.25)
+
+[node name="CurveCornerNWMesh" type="MeshInstance3D" parent="ArenaStatic"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 10, 28)
+mesh = SubResource("CylinderMesh_vert")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_curve")
+
+[node name="CurveCornerSE" type="CollisionShape3D" parent="ArenaStatic"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 10, -28)
+shape = SubResource("CylinderShape3D_vert")
+debug_color = Color(0.8, 0.8, 0.2, 0.25)
+
+[node name="CurveCornerSEMesh" type="MeshInstance3D" parent="ArenaStatic"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 10, -28)
+mesh = SubResource("CylinderMesh_vert")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_curve")
+
+[node name="CurveCornerSW" type="CollisionShape3D" parent="ArenaStatic"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 10, -28)
+shape = SubResource("CylinderShape3D_vert")
+debug_color = Color(0.8, 0.8, 0.2, 0.25)
+
+[node name="CurveCornerSWMesh" type="MeshInstance3D" parent="ArenaStatic"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 10, -28)
+mesh = SubResource("CylinderMesh_vert")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_curve")
+
+[node name="FloorDebugMesh" type="MeshInstance3D" parent="ArenaStatic"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+mesh = SubResource("BoxMesh_floor_debug")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_floor")
+
+[node name="OutOfBounds" type="Area3D" parent="."]
+collision_layer = 32
+collision_mask = 10
+monitoring = true
+monitorable = true
+
+[node name="OOBShape" type="CollisionShape3D" parent="OutOfBounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+shape = SubResource("BoxShape3D_oob")
+debug_color = Color(1, 0.2, 0.8, 0.15)

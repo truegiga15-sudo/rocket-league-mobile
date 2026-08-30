@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://car_chassis_ws11_v01"]
+
+[ext_resource type="Script" path="res://src/game/car/car_physics.gd" id="1_ws11"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_ws11"]
+size = Vector3(2.1, 1.5, 4.2)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ws11"]
+friction = 0.9
+bounce = 0.15
+
+[node name="CarChassis" type="RigidBody3D" groups=["car", "car_chassis"]]
+script = ExtResource("1_ws11")
+mass = 180.0
+inertia = Vector3(298.35, 330.75, 99.9)
+center_of_mass_mode = 1
+center_of_mass = Vector3(0.0, -0.35, 0.08)
+collision_layer = 2
+collision_mask = 11
+linear_damp = 0.15
+angular_damp = 0.35
+physics_material_override = SubResource("PhysicsMaterial_ws11")
+continuous_cd = false
+can_sleep = true
+gravity_scale = 1.0
+freeze = false
+sleeping = false
+custom_integrator = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_ws11")
+debug_color = Color(0.2, 0.6, 1.0, 0.42)
+
+[node name="DebugVis" type="MeshInstance3D" parent="CollisionShape3D"]
+visible = false
+
+[node name="CenterOfMassMarker" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.35, 0.08)

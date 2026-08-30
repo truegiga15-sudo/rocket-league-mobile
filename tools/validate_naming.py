@@ -76,6 +76,7 @@ ALLOWLIST_FILES = {
 # WS03: scene files that are legacy test fixtures allowed as snake_case (enforced as warning, not error)
 ALLOWLIST_TSCN_SNAKE = {
     "coordinate_test.tscn",  # WS04 test fixture — lower snake is intentional for test parity with _test.gd
+    "ball.tscn",  # WS19 ball physics — spec mandates snake_case per task; allowed as exception (ownership table)
 }
 
 # README.md is allowed to be Pascal-like inside any dir (common convention)

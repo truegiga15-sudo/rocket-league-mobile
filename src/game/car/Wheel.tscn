@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://wheel_ws12_v01"]
+
+[ext_resource type="Script" path="res://src/game/car/suspension.gd" id="1_ws12"]
+
+[node name="Wheel_Main" type="Node3D"]
+
+[node name="Wheel_Ray" type="RayCast3D" parent="Wheel_Main"]
+enabled = true
+target_position = Vector3(0, -0.55, 0)
+collision_mask = 1
+collide_with_bodies = true
+collide_with_areas = false
+debug_shape_custom_color = Color(0.2, 0.8, 0.2, 0.42)
+
+[node name="Wheel_Mesh" type="MeshInstance3D" parent="Wheel_Main"]
+visible = true
+
+[node name="Wheel_Debug" type="Marker3D" parent="Wheel_Main"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)

@@ -92,3 +92,6 @@ TestHooks="*res://src/core/test_hooks.gd"
 
 renderer/rendering_method="gl_compatibility"
 environment/defaults/default_environment="res://src/render/default_env.tres"
+
+[audio]
+bus/default_bus_layout="res://src/audio/mixer.tres"

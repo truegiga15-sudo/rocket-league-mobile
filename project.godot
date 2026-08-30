@@ -11,8 +11,16 @@ config/features=PackedStringArray("4.4")
 boot_splash/bg_color=Color(0.05, 0.05, 0.08, 1)
 config/icon="res://assets/authored/icon/icon.png"
 
-[physics]
+[layer_names]
 
+3d_physics/layer_1="world_static"
+3d_physics/layer_2="car_chassis"
+3d_physics/layer_3="wheels"
+3d_physics/layer_4="ball"
+3d_physics/layer_5="boost_pads"
+3d_physics/layer_6="sensors"
+
+[physics]
 common/physics_ticks_per_second=120
 
 [input]
@@ -74,11 +82,10 @@ look_down={
 
 InputService="*res://src/core/input_service.gd"
 Haptics="*res://src/platform/android/haptics.gd"
-
-[autoload]
-
 SaveService="*res://src/core/save_service.gd"
 ConfigService="*res://src/core/config_service.gd"
+TelemetryService="*res://src/core/telemetry_service.gd"
+TestHooks="*res://src/core/test_hooks.gd"
 
 [rendering]
 

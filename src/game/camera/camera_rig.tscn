@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://cma4ws29_camera_rig"]
+
+[ext_resource type="Script" path="res://src/game/camera/camera_rig.gd" id="1_ws29"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_w0n3p"]
+radius = 0.2
+height = 0.6
+
+[node name="Node3D_CameraRig" type="Node3D"]
+script = ExtResource("1_ws29")
+target_path = NodePath("")
+stiffness = 8.0
+lag = 0.15
+fov = 75.0
+boost_fov = 85.0
+fov_transition_speed = 5.0
+follow_distance = 10.0
+follow_height = 3.5
+yaw_sensitivity_deg = 90.0
+pitch_sensitivity_deg = 60.0
+pitch_min_deg = -20.0
+pitch_max_deg = 30.0
+spring_length = 10.0
+spring_margin = 0.4
+look_sensitivity = 1.0
+
+[node name="SpringArm3D_SpringArm" type="SpringArm3D" parent="."]
+spring_length = 10.0
+margin = 0.4
+collision_mask = 1
+shape = SubResource("CapsuleShape3D_w0n3p")
+
+[node name="Camera3D_Camera" type="Camera3D" parent="SpringArm3D_SpringArm"]
+fov = 75.0
+current = true
+near = 0.05
+far = 1500.0

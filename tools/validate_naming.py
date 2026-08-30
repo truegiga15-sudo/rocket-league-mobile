@@ -80,6 +80,7 @@ ALLOWLIST_TSCN_SNAKE = {
     "camera_rig.tscn",  # WS29 camera follow — allowed snake
     "arena_collision.tscn",  # WS21 arena collision — legacy snake, allowed per WS26 fix
     "car_chassis.tscn",  # WS11 car chassis — legacy snake, allowed per WS26 fix
+    "stadium.tscn",  # WS36 DFH stadium geometry — legacy snake, allowed per WS36
 }
 
 # README.md is allowed to be Pascal-like inside any dir (common convention)

@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://ws19_ball_main"]
+
+[ext_resource type="Script" path="res://src/game/ball/ball_physics.gd" id="1_ballphys"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ball"]
+friction = 0.6
+bounce = 0.75
+rough = false
+absorbent = false
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ball"]
+radius = 0.91
+
+[sub_resource type="SphereMesh" id="SphereMesh_ball"]
+radius = 0.91
+height = 1.82
+radial_segments = 16
+rings = 8
+
+[node name="Ball_Main" type="RigidBody3D"]
+mass = 30.0
+linear_damp = 0.08
+angular_damp = 0.12
+physics_material_override = SubResource("PhysicsMaterial_ball")
+collision_layer = 8
+collision_mask = 3
+continuous_cd = true
+contact_monitor = true
+max_contacts_reported = 8
+gravity_scale = 1.0
+can_sleep = true
+sleeping = false
+lock_rotation = false
+script = ExtResource("1_ballphys")
+spawn_position = Vector3(0, 2, 0)
+reset_on_ready = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_ball")
+debug_color = Color(0.2, 0.6, 1.0, 0.4)
+
+[node name="BallMesh_Debug" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_ball")
+skeleton = NodePath("")

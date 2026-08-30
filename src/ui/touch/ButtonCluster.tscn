@@ -1,0 +1,71 @@
+[gd_scene load_steps=2 format=3 uid="uid://c9x2k8_ws28_button_cluster"]
+
+[ext_resource type="Script" path="res://src/ui/touch/button_cluster.gd" id="1_cluster"]
+
+[node name="Control_ButtonCluster" type="Control"]
+layout_mode = 3
+anchors_preset = 4
+anchor_left = 0.65
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 0
+script = ExtResource("1_cluster")
+boost_size_dp = 72.0
+jump_size_dp = 64.0
+drift_size_dp = 56.0
+gap_dp = 8.0
+min_target_dp = 56.0
+safe_padding_dp = 12.0
+opacity_idle = 0.85
+opacity_pressed = 1.0
+
+[node name="Button_Boost" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 72.0
+offset_bottom = 72.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+text = "BOOST"
+flat = false
+clip_text = true
+
+[node name="Button_Jump" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+text = "JUMP"
+flat = false
+clip_text = true
+
+[node name="Button_Drift" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 56.0
+offset_bottom = 56.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+text = "DRIFT"
+flat = false
+clip_text = true

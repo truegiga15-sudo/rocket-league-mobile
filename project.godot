@@ -9,7 +9,9 @@ name="Rocket League Mobile"
 run/main_scene="res://src/ui/main_menu.tscn"
 config/features=PackedStringArray("4.4")
 boot_splash/bg_color=Color(0.05, 0.05, 0.08, 1)
-config/icon="res://assets/authored/icon/icon.png"
+config/icon="res://assets/icon.png"
+config/splash="res://assets/splash.png"
+boot_splash/image="res://assets/splash.png"
 
 [layer_names]
 

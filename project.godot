@@ -73,6 +73,7 @@ look_down={
 [autoload]
 
 InputService="*res://src/core/input_service.gd"
+TimeService="*res://src/core/time_service.gd"
 Haptics="*res://src/platform/android/haptics.gd"
 
 [autoload]

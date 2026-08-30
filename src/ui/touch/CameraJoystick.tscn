@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7m3p9_ws27_camera_joystick"]
+
+[ext_resource type="Script" path="res://src/ui/touch/camera_joystick.gd" id="1_camera"]
+
+[node name="Control_CameraJoystick" type="Control"]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 0.65
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 0
+script = ExtResource("1_camera")
+deadzone_dp = 8.0
+sensitivity_dp = 120.0
+sensitivity = 1.0
+right_area_percent = 35.0
+invert_y = false
+opacity_idle = 0.35
+opacity_active = 0.75

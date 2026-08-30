@@ -1,0 +1,9 @@
+[gd_resource type="Curve" format=3 uid="uid://c8e14f3a2d9b4e6a8f01d2345678ab12"]
+
+[resource]
+_data = [Vector2(0.0, 1.0), 0.0, 0.0, 0, 0, Vector2(0.15, 0.98), 0.0, 0.0, 0, 0, Vector2(0.3, 0.92), 0.0, 0.0, 0, 0, Vector2(0.5, 0.78), 0.0, 0.0, 0, 0, Vector2(0.65, 0.62), 0.0, 0.0, 0, 0, Vector2(0.8, 0.42), 0.0, 0.0, 0, 0, Vector2(0.9, 0.28), 0.0, 0.0, 0, 0, Vector2(1.0, 0.08), 0.0, 0.0, 0, 0, Vector2(1.15, 0.0), 0.0, 0.0, 0, 0]
+point_count = 9
+min_value = 0.0
+max_value = 1.0
+bake_resolution = 100
+resource_name = "EngineTorqueCurve"

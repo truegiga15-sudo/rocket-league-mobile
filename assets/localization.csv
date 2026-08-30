@@ -1,0 +1,35 @@
+key,en,es,fr
+# Menu
+menu.play,Play,Jugar,Jouer
+menu.garage,Garage,Garaje,Garage
+menu.settings,Settings,Ajustes,Paramètres
+menu.exit,Exit,Salir,Quitter
+menu.resume,Resume,Continuar,Reprendre
+menu.quit,Quit to Menu,Volver al menú,Retour au menu
+menu.back,Back,Atrás,Retour
+menu.loading,Loading,Cargando,Chargement
+# HUD
+hud.score,Score,Puntuación,Score
+hud.time,Time,Tiempo,Temps
+hud.boost,Boost,Turbo,Boost
+hud.goal,GOAL!,¡GOL!,BUT !
+hud.saved,SAVED!,¡PARADA!,ARRÊT !
+hud.overtime,Overtime,Prórroga,Prolongation
+hud.win,You Win!,¡Victoria!,Victoire !
+hud.lose,You Lose,Derrota,Défaite
+hud.draw,Draw,Empate,Égalité
+# Settings
+settings.title,Settings,Ajustes,Paramètres
+settings.audio,Audio,Audio,Audio
+settings.video,Video,Vídeo,Vidéo
+settings.controls,Controls,Controles,Contrôles
+settings.language,Language,Idioma,Langue
+settings.back,Back,Atrás,Retour
+settings.apply,Apply,Aplicar,Appliquer
+settings.graphics_quality,Graphics Quality,Calidad gráfica,Qualité graphique
+settings.master_volume,Master Volume,Volumen principal,Volume principal
+settings.sensitivity,Sensitivity,Sensibilidad,Sensibilité
+settings.invert_y,Invert Y,Invertir Y,Inverser Y
+settings.vibration,Vibration,Vibración,Vibration
+settings.reset,Reset to Defaults,Restablecer valores,Réinitialiser
+settings.general,General,General,Général

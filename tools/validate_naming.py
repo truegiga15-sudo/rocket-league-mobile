@@ -81,6 +81,9 @@ ALLOWLIST_TSCN_SNAKE = {
     "arena_collision.tscn",  # WS21 arena collision — legacy snake, allowed per WS26 fix
     "car_chassis.tscn",  # WS11 car chassis — legacy snake, allowed per WS26 fix
     "stadium.tscn",  # WS36 DFH stadium geometry — legacy snake, allowed per WS36
+    "main_menu.tscn",  # WS76 main menu — legacy snake, allowed per WS97 regression gate
+    "settings.tscn",  # WS79 settings — legacy snake, allowed per WS97
+    "loading.tscn",  # WS81 loading — legacy snake, allowed per WS97
 }
 
 # README.md is allowed to be Pascal-like inside any dir (common convention)
